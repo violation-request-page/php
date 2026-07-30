@@ -27,14 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com'; // Replace with your SMTP server address
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'gemnipro10@gmail.com'; // Replace with your email address
-        $mail->Password   = 'ixho qmiy utmm yqix'; // Replace with your email password
+        $mail->Username   = 'dighfighters@gmail.com'; // Replace with your email address
+        $mail->Password   = 'vcoa iaxb rgtk rjbx'; // Replace with your email password
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
 
         // Email properties
-        $mail->setFrom('gemnipro10@gmail.com', 'chor');
+        $mail->setFrom('dighfighters@gmail.com', 'chor');
         $mail->addAddress('alibrohi883@gmail.com');
        
 
